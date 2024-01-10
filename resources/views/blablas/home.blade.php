@@ -108,8 +108,9 @@
             <div class="col-4 p-3 rounded" style="border-right: 3px solid rgb(226, 242, 5);">
                 {{ $todos->links() }}
                 @foreach ($todos as $todo)
-                    <div class="card bg-dark text-warning mb-3" style="box-shadow: 3px 3px 5px rgb(228, 232, 7);">
-                        <h3 class="card-title text-center">{{ $todo->title }}</h3>
+                    <div class="card bg-dark text-warning mb-3" style="box-shadow: 3px 3px 7px rgb(228, 232, 7);">
+                        <h3 class="card-title text-center">{{ $todo->title }}</h3><span
+                            class="badge badge-pill badge-warning">Level -> {{ $todo->importantlv }}</span>
                         <div class="button-group m-2 d-flex justify-content-center">
                             <a href="{{ route('todo.show', $todo->id) }}" class="btn btn-outline-primary"><i
                                     class="fa-solid fa-circle-info"></i> Details</a>
@@ -119,17 +120,24 @@
             </div>
             @if (isset($detailData))
                 <div class="col-5 p-3">
-                    <div class="card bg-dark text-warning">
+                    <div class="card bg-dark text-warning" style="box-shadow: 3px 3px 7px 7px yellow">
                         <h1 class="card-title text-center">{{ $detailData->title }}</h1>
                         <hr>
+                        <div class="d-flex justify-content-between">
+                            <span class="h5 px-2" style="border-right: 3px solid rgb(242, 250, 14)">Created Date ->
+                                {{ $detailData->created_at->format('d-M-Y') }}</span>
+                            <span class="h5 px-2">Updated Date ->
+                                {{ $detailData->updated_at->format('d-M-Y') }}</span>
+                        </div>
+                        <hr>
                         <div class="card-body">
-                            <span class="text-success h2 mb-5 d-block">
+                            <span class="h3 mb-5 d-block">
                                 Note Category -> {{ $detailData->category }}
                             </span>
                             <div class="h3 mb-5">
                                 Description -> {{ $detailData->description }}
                             </div>
-                            <span class="text-danger h2 mb-5">Important Level -> {{ $detailData->importantlv }}</span>
+                            <span class="h3 mb-5">Important Level -> {{ $detailData->importantlv }}</span>
                         </div>
                         <div class="button-group m-2 d-flex justify-content-between">
                             <a href="{{ route('todo.edit', $detailData->id) }}" class="btn btn-outline-warning"><i
@@ -145,7 +153,7 @@
             @endif
             @if (!isset($detailData))
                 <div class="col-5 p-3 d-flex justify-content-center align-items-center">
-                    <h1>Detail View</h1>
+                    <h1>Default Detail View</h1>
                 </div>
             @endif
         </div>
