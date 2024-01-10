@@ -12,7 +12,7 @@
                         <input type="text" name="title" placeholder="Enter Title"
                             class="form-control @error('title') is-invalid
                     @enderror"
-                            value="{{ $editData->title }}">
+                            value="{{ old('title',$editData->title) }}">
                         @error('title')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -21,7 +21,7 @@
                         <textarea name="description" cols="20"
                             class="form-control @error('description') is-invalid
                     @enderror" rows="3"
-                            placeholder="Enter Description">{{ $editData->description }}</textarea>
+                            placeholder="Enter Description">{{ old('description',$editData->description) }}</textarea>
                         @error('description')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -30,7 +30,7 @@
                         <input type="number" name="importantlv" placeholder="Enter Emportant Level"
                             class="form-control @error('importantlv') is-invalid
                     @enderror"
-                            value="{{ $editData->importantlv }}">
+                            value="{{ old('importantlv',$editData->importantlv) }}">
                         @error('importantlv')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -39,7 +39,7 @@
                         <input list="browsers" placeholder="Enter Note Category"
                             class="form-control @error('category') is-invalid
                     @enderror""
-                            name="category" value="{{ $editData->category }}" id="browser">
+                            name="category" value="{{ old('category',$editData->category) }}" id="browser">
                         @error('category')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
